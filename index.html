@@ -42,8 +42,13 @@
   </div>
 
   <audio id="gachaSound" src="https://cdn.pixabay.com/download/audio/2022/03/15/audio_c0f5b8c9c6.mp3?filename=success-1-6297.mp3"></audio>
-
   <script>
+    function preloadImage(url)
+    {
+        var img=new Image();
+        img.src=url;
+    }
+
     const items = {
       tier1: ["/img/adtar-jumbo.jpeg", "/img/adtar-subway.jpeg", "/img/adtar-hah.jpeg"],
       tier2: ["/img/adtar-fetus.jpeg", "/img/adtar-lulus.jpeg", "/img/adtar-iphone.jpeg"],
@@ -52,7 +57,11 @@
       tier5: ["/img/adtar-cowboy.jpeg", "/img/adtar-gay.jpeg"],
       whatIf: ["/img/fajar-flannel.jpeg", "/img/adtar-yori.jpeg"]
     };
-
+    document.getElementById("gachaButton").setAttribute("disabled", "")
+    const allItems = Object.values(items).flat();
+    allItems.forEach((e) => preloadImage(e))
+    document.getElementById("gachaButton").removeAttribute("disabled", "")
+    
     const srcMap = {
         "/img/adtar-jumbo.jpeg": 'Adtar Jumbo 🤨',
         "/img/adtar-subway.jpeg": 'Adtar Subway 🥪',
